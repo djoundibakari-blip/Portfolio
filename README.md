@@ -18,7 +18,6 @@ npm install
 npm run dev
 ```
 
-Le site est accessible sur [http://localhost:3000](http://localhost:3000)
 
 ### Build de production
 
