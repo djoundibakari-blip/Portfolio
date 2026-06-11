@@ -3,52 +3,52 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Theme 1: Dark (default) */
+/* Theme 1: Dark — Melanophobia palette */
 :root,
 [data-theme="dark"] {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --card: #141414;
-  --card-foreground: #ffffff;
-  --popover: #141414;
-  --popover-foreground: #ffffff;
-  --primary: #ffffff;
-  --primary-foreground: #0a0a0a;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #aaaaaa;
-  --muted: #1a1a1a;
-  --muted-foreground: #aaaaaa;
-  --accent: #ffffff;
-  --accent-foreground: #0a0a0a;
+  --background: #020C1C;
+  --foreground: #A6B4D8;
+  --card: #031536;
+  --card-foreground: #A6B4D8;
+  --popover: #031536;
+  --popover-foreground: #A6B4D8;
+  --primary: #7B8BB3;
+  --primary-foreground: #020C1C;
+  --secondary: #0A2853;
+  --secondary-foreground: #A6B4D8;
+  --muted: #0A2853;
+  --muted-foreground: #54668D;
+  --accent: #ffdb83;
+  --accent-foreground: #020C1C;
   --destructive: #ff3b3b;
   --destructive-foreground: #ffffff;
-  --border: #2a2a2a;
-  --input: #1a1a1a;
-  --ring: #ffffff;
+  --border: #2F456E;
+  --input: #031536;
+  --ring: #7B8BB3;
   --radius: 0.625rem;
 }
 
-/* Theme 2: Light */
+/* Theme 2: Light — Dreamlit Horizon palette */
 [data-theme="light"] {
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: #fff2d0;
+  --foreground: #020C1C;
   --card: #ffffff;
-  --card-foreground: #000000;
+  --card-foreground: #020C1C;
   --popover: #ffffff;
-  --popover-foreground: #000000;
-  --primary: #000000;
+  --popover-foreground: #020C1C;
+  --primary: #3e668f;
   --primary-foreground: #ffffff;
-  --secondary: #f5f5f5;
-  --secondary-foreground: #666666;
-  --muted: #f5f5f5;
-  --muted-foreground: #666666;
-  --accent: #000000;
-  --accent-foreground: #ffffff;
+  --secondary: #aab4e7;
+  --secondary-foreground: #020C1C;
+  --muted: #aab4e7;
+  --muted-foreground: #2F456E;
+  --accent: #ffdb83;
+  --accent-foreground: #020C1C;
   --destructive: #ff3b3b;
   --destructive-foreground: #ffffff;
-  --border: #e0e0e0;
-  --input: #f5f5f5;
-  --ring: #000000;
+  --border: #81a9ee;
+  --input: #fff2d0;
+  --ring: #3e668f;
 }
 
 /* Theme 3: Dragon Ball */
