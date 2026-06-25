@@ -4,7 +4,7 @@ import { GithubIcon } from "@/components/icons"
 const socialLinks = [
   {
     icon: GithubIcon,
-    href: "https://github.com/Djoundi",
+    href: "https://github.com/djoundibakari-blip",
     label: "GitHub",
   },
   {
@@ -89,7 +89,7 @@ export function Footer() {
           </a>
           <span className="text-muted-foreground">|</span>
           <a
-            href="https://github.com/Djoundi"
+            href="https://github.com/djoundibakari-blip"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-primary transition-colors"

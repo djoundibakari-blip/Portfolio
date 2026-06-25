@@ -102,7 +102,7 @@ export function Hero() {
           {/* Social Links */}
           <div className="flex items-center justify-center gap-4 mt-8">
             <a
-              href="https://github.com/Djoundi"
+              href="https://github.com/djoundibakari-blip"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-secondary rounded-full text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all hover:scale-110"
