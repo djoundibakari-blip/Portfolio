@@ -80,9 +80,13 @@ const projects = [
   },
 ]
 
+type Phase = "visible" | "exiting" | "entering"
+
 export function Projects() {
   const [isVisible, setIsVisible] = useState(false)
   const [current, setCurrent] = useState(0)
+  const [phase, setPhase] = useState<Phase>("visible")
+  const [dir, setDir] = useState<"next" | "prev">("next")
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const wasDragged = useRef(false)
@@ -106,13 +110,19 @@ export function Projects() {
     return () => observer.disconnect()
   }, [])
 
-  const prev = useCallback(() => {
-    setCurrent((c) => (c - 1 + total) % total)
-  }, [total])
+  const navigate = useCallback((direction: "next" | "prev") => {
+    if (phase !== "visible") return
+    setDir(direction)
+    setPhase("exiting")
+    setTimeout(() => {
+      setCurrent((c) => direction === "next" ? (c + 1) % total : (c - 1 + total) % total)
+      setPhase("entering")
+      setTimeout(() => setPhase("visible"), 320)
+    }, 280)
+  }, [phase, total])
 
-  const next = useCallback(() => {
-    setCurrent((c) => (c + 1) % total)
-  }, [total])
+  const prev = useCallback(() => navigate("prev"), [navigate])
+  const next = useCallback(() => navigate("next"), [navigate])
 
   // Auto-play
   useEffect(() => {
@@ -185,7 +195,17 @@ export function Projects() {
                   const url = project.live ?? project.github;
                   if (url) window.open(url, "_blank", "noopener,noreferrer");
                 }}
-                className="group block bg-card border border-border rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10 cursor-pointer"
+                className={`group block bg-card border border-border rounded-2xl overflow-hidden transition-all duration-[280ms] ease-in-out hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10 cursor-pointer ${
+                  phase === "visible"
+                    ? "opacity-100 translate-x-0"
+                    : phase === "exiting"
+                    ? dir === "next"
+                      ? "opacity-0 -translate-x-10"
+                      : "opacity-0 translate-x-10"
+                    : dir === "next"
+                    ? "opacity-0 translate-x-10"
+                    : "opacity-0 -translate-x-10"
+                }`}
               >
                 {/* Screenshot */}
                 {project.image && (
