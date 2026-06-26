@@ -51,27 +51,27 @@
   --ring: #9381FF;
 }
 
-/* Theme 3: Dragon Ball */
+/* Theme 3: Dragon Ball Z — espace profond, ki de Goku, aura Super Saiyan */
 [data-theme="dragonball"] {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --card: #121212;
-  --card-foreground: #ffffff;
-  --popover: #121212;
-  --popover-foreground: #ffffff;
-  --primary: #ff8c00;
-  --primary-foreground: #000000;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #ffcc80;
-  --muted: #1a1a1a;
-  --muted-foreground: #ffcc80;
-  --accent: #ff3b3b;
-  --accent-foreground: #ffffff;
-  --destructive: #ff3b3b;
+  --background: #07050E;      /* espace profond */
+  --foreground: #F0EAFF;      /* blanc légèrement violet */
+  --card: #0F0B1C;            /* fond carte sombre */
+  --card-foreground: #F0EAFF;
+  --popover: #0F0B1C;
+  --popover-foreground: #F0EAFF;
+  --primary: #FF8C00;         /* ki orange — gi de Goku */
+  --primary-foreground: #0A0010;
+  --secondary: #180F2E;       /* violet-espace */
+  --secondary-foreground: #FFD166;
+  --muted: #180F2E;
+  --muted-foreground: #9080B8; /* violet muted */
+  --accent: #00C4FF;          /* Super Saiyan Blue / Kamehameha */
+  --accent-foreground: #000000;
+  --destructive: #FF3B3B;
   --destructive-foreground: #ffffff;
-  --border: #ff8c00;
-  --input: #1a1a1a;
-  --ring: #ff8c00;
+  --border: #2E1F60;          /* bordure violet profond */
+  --input: #0F0B1C;
+  --ring: #FF8C00;
 }
 
 @theme inline {
@@ -139,47 +139,79 @@
   background: var(--primary);
 }
 
-/* Dragon Ball theme glow effects */
-[data-theme="dragonball"] .card,
-[data-theme="dragonball"] [class*="border"] {
-  box-shadow: 0 0 10px rgba(255, 140, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+/* Dragon Ball theme — effets ki & aura */
+
+/* Lueur ambiante sur les cartes */
+[data-theme="dragonball"] [class*="bg-card"],
+[data-theme="dragonball"] [class*="bg-secondary"] {
+  box-shadow: 0 0 0 1px rgba(255, 140, 0, 0.06), 0 4px 24px rgba(7, 5, 14, 0.8);
 }
 
-[data-theme="dragonball"] .card:hover,
+/* Hover : aura ki orange */
+[data-theme="dragonball"] a:hover,
 [data-theme="dragonball"] button:hover {
-  box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+  box-shadow: 0 0 18px rgba(255, 140, 0, 0.25);
 }
 
+/* Boutons primaires : lueur ki */
 [data-theme="dragonball"] .bg-primary {
-  box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.45), 0 0 60px rgba(255, 140, 0, 0.15);
 }
-
 [data-theme="dragonball"] .bg-primary:hover {
-  box-shadow: 0 0 25px rgba(255, 140, 0, 0.7);
+  box-shadow: 0 0 30px rgba(255, 140, 0, 0.65), 0 0 80px rgba(255, 140, 0, 0.25);
 }
 
-/* Animation for Dragon Ball intro */
+/* Texte primary : lueur dorée */
+[data-theme="dragonball"] .text-primary {
+  text-shadow: 0 0 12px rgba(255, 140, 0, 0.6);
+}
+
+/* Bordures actives : éclair d'énergie */
+[data-theme="dragonball"] [class*="ring-primary"],
+[data-theme="dragonball"] [class*="border-primary"] {
+  box-shadow: 0 0 0 1px #FF8C00, 0 0 12px rgba(255, 140, 0, 0.4);
+}
+
+/* Scrollbar DBZ */
+[data-theme="dragonball"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FF8C00, #FF4500);
+  box-shadow: 0 0 8px rgba(255, 140, 0, 0.5);
+}
+
+/* Dragon Ball animations */
 @keyframes pulse-glow {
-  0%, 100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.5);
-  }
+  0%, 100% { filter: brightness(1); }
+  50%       { filter: brightness(1.6) drop-shadow(0 0 12px rgba(255,140,0,0.8)); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Aura ki pulsante */
+@keyframes ki-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,140,0,0.4), 0 0 60px rgba(255,140,0,0.1); }
+  50%       { box-shadow: 0 0 40px rgba(255,140,0,0.7), 0 0 100px rgba(255,140,0,0.25); }
+}
+
+/* Éclat doré Super Saiyan */
+@keyframes saiyan-glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(255,209,102,0.9), 0 0 30px rgba(255,140,0,0.7); }
+  50%       { text-shadow: 0 0 20px rgba(255,230,150,1), 0 0 50px rgba(255,180,0,0.9), 0 0 80px rgba(255,100,0,0.5); }
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+[data-theme="dragonball"] .saiyan-font,
+[data-theme="dragonball"] h1.saiyan-font {
+  animation: saiyan-glow 3s ease-in-out infinite;
+}
+
+[data-theme="dragonball"] .bg-primary {
+  animation: ki-pulse 2.5s ease-in-out infinite;
 }
 
 /* Smooth theme transitions — scoped to avoid cost of universal selector */
@@ -208,16 +240,25 @@ body, button, a, input, textarea, .card,
   text-transform: uppercase;
 }
 
+/* Titre hero : aura Super Saiyan dorée */
 [data-theme="dragonball"] h1.saiyan-font,
 [data-theme="dragonball"] .saiyan-title {
   font-size: clamp(2rem, 5vw, 4rem);
-  text-shadow: 0 0 20px rgba(255, 140, 0, 0.6), 0 0 40px rgba(255, 59, 59, 0.4);
+  text-shadow:
+    0 0 10px rgba(255, 209, 102, 0.9),
+    0 0 30px rgba(255, 140, 0, 0.7),
+    0 0 60px rgba(255, 100, 0, 0.4);
 }
 
-/* Logo in Dragon Ball theme */
+/* Logo : ki orange vibrant */
 [data-theme="dragonball"] .logo {
   font-family: var(--font-bebas), 'Bebas Neue', cursive;
-  color: #ff8c00;
-  text-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
+  color: #FF8C00;
+  text-shadow: 0 0 12px rgba(255, 140, 0, 0.9), 0 0 30px rgba(255, 140, 0, 0.4);
   letter-spacing: 0.1em;
+}
+
+/* Underline nav active : trait ki */
+[data-theme="dragonball"] [class*="bg-primary"][class*="h-0.5"] {
+  box-shadow: 0 0 8px rgba(255, 140, 0, 0.8);
 }
