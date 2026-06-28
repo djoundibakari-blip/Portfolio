@@ -407,16 +407,17 @@ export default function Home() {
               )}
             </div>
             <nav className="space-y-0.5">
-              {CONVS.map((c) => {
+              {CONVS.map((c, i) => {
                 const mentioned = messages.some(m => m.convId === c.id) || lastPill === c.id
                 return (
                   <button key={c.id} onClick={() => navigate(c.id)}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-left transition-colors ${
+                    className={`sidebar-item w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-left transition-all duration-200 hover:translate-x-0.5 ${
                       mentioned
                         ? "text-foreground hover:bg-secondary/50"
                         : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
-                    }`}>
-                    <MessageSquare className={`w-4 h-4 shrink-0 ${mentioned ? "text-primary" : ""}`} />
+                    }`}
+                    style={{ animationDelay: `${i * 60}ms` }}>
+                    <MessageSquare className={`w-4 h-4 shrink-0 transition-colors ${mentioned ? "text-primary" : ""}`} />
                     {c.label}
                   </button>
                 )
@@ -457,19 +458,21 @@ export default function Home() {
 
                   {/* Large headline — edwinle.com style */}
                   <div>
-                    <p className="text-xs font-medium text-primary uppercase tracking-[0.28em] mb-5">
+                    <p className="fade-up text-xs font-medium text-primary uppercase tracking-[0.28em] mb-5" style={{ animationDelay: "0ms" }}>
                       Alternant Développeur Web · Epitech Lyon
                     </p>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.05] tracking-tight">
-                      Je suis<br />
-                      Djoundi{" "}
-                      <span className="text-primary whitespace-nowrap">
-                        {typed}
-                        {typed !== TYPED_WORD && (
-                          <span className="inline-block w-[3px] h-[0.8em] bg-primary ml-1 align-middle animate-pulse" />
-                        )}
-                      </span>
-                    </h1>
+                    <div className="overflow-hidden">
+                      <h1 className="fade-up text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.05] tracking-tight" style={{ animationDelay: "80ms" }}>
+                        Je suis<br />
+                        Djoundi{" "}
+                        <span className="text-primary whitespace-nowrap">
+                          {typed}
+                          {typed !== TYPED_WORD && (
+                            <span className="inline-block w-[3px] h-[0.8em] bg-primary ml-1 align-middle animate-pulse" />
+                          )}
+                        </span>
+                      </h1>
+                    </div>
                   </div>
 
                   {/* AI first message — chat bubble */}
@@ -499,7 +502,7 @@ export default function Home() {
                     <div className="flex flex-wrap gap-2">
                       {PILLS.map((p) => (
                         <button key={p.target} onClick={() => navigate(p.target)}
-                          className="px-4 py-2 rounded-full text-sm border border-border/60 text-muted-foreground bg-secondary/20 hover:border-primary/50 hover:text-primary hover:bg-primary/5 transition-all duration-200">
+                          className="px-4 py-2 rounded-full text-sm border border-border/60 text-muted-foreground bg-secondary/20 hover:border-primary/50 hover:text-primary hover:bg-primary/5 hover:scale-105 active:scale-95 transition-all duration-200">
                           {p.text}
                         </button>
                       ))}
@@ -565,7 +568,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-2">
                 {PILLS.map((p) => (
                   <button key={p.target} onClick={() => navigate(p.target)} disabled={typing}
-                    className={`px-3 py-1.5 rounded-full text-xs border transition-all hover:border-primary/60 hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed ${
+                    className={`px-3 py-1.5 rounded-full text-xs border transition-all hover:border-primary/60 hover:text-primary hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
                       lastPill === p.target && !typing
                         ? "border-primary bg-primary/10 text-primary"
                         : "border-border text-muted-foreground bg-secondary/30"
@@ -582,10 +585,10 @@ export default function Home() {
                   value={input}
                   onChange={e => setInput(e.target.value)}
                   placeholder="Posez votre question…"
-                  className="flex-1 px-4 py-2.5 bg-secondary/50 border border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                  className="flex-1 px-4 py-2.5 bg-secondary/50 border border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_color-mix(in_srgb,var(--primary)_15%,transparent)] transition-all duration-200"
                 />
                 <button type="submit"
-                  className="p-2.5 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all">
+                  className="p-2.5 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 hover:scale-105 active:scale-90 transition-all duration-150">
                   <Send className="w-4 h-4" />
                 </button>
               </form>
