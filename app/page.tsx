@@ -351,12 +351,12 @@ export default function Home() {
       {/* ── Intro animation ── */}
       {intro && (
         <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-background transition-opacity duration-700 ${introOut ? "opacity-0" : "opacity-100"}`}>
-          <div className="overflow-hidden mb-2">
+          <div className="overflow-hidden mb-2 pb-1">
             <p className="text-xs font-medium text-primary uppercase tracking-[0.3em] intro-slide-up" style={{ animationDelay: "100ms" }}>
               Alternant Développeur Web
             </p>
           </div>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden pb-3">
             <h1 className="text-5xl md:text-7xl font-bold text-foreground tracking-tight intro-slide-up" style={{ animationDelay: "250ms" }}>
               Djoundi Bakari.
             </h1>
