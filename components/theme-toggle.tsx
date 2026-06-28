@@ -1,6 +1,6 @@
 "use client"
 
-import { Moon, Sun, Sparkles } from "lucide-react"
+import { Moon, Sun } from "lucide-react"
 import { useTheme } from "./theme-provider"
 
 export function ThemeToggle() {
@@ -9,7 +9,6 @@ export function ThemeToggle() {
   const themes = [
     { id: "dark" as const, icon: Moon, label: "Sombre" },
     { id: "light" as const, icon: Sun, label: "Clair" },
-    { id: "dragonball" as const, icon: Sparkles, label: "Dragon Ball" },
   ]
 
   return (
